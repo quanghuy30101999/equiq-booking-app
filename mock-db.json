@@ -1,0 +1,217 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "role": "Admin",
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "email": "user@example.com",
+      "password": "user123",
+      "name": "Normal User",
+      "role": "Individual",
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name": "Nguyễn Văn A",
+      "email": "nguyenvana@example.com",
+      "role": "Kỹ sư",
+      "department": "Kỹ thuật",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Trần Thị B",
+      "email": "tranthib@example.com",
+      "role": "Quản lý",
+      "department": "Hành chính",
+      "createdAt": "2025-01-02T00:00:00.000Z",
+      "updatedAt": "2025-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Lê Văn C",
+      "email": "levanc@example.com",
+      "role": "Kỹ thuật viên",
+      "department": "Kỹ thuật",
+      "createdAt": "2025-01-03T00:00:00.000Z",
+      "updatedAt": "2025-01-03T00:00:00.000Z"
+    }
+  ],
+  "equipments": [
+    {
+      "id": "1",
+      "name": "Máy khoan Bosch",
+      "category": "Dụng cụ điện",
+      "serialNumber": "BSH-001",
+      "status": "available",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Máy cắt laser",
+      "category": "Máy công nghiệp",
+      "serialNumber": "LSR-002",
+      "status": "in_use",
+      "createdAt": "2025-01-02T00:00:00.000Z",
+      "updatedAt": "2025-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Máy hàn điện tử",
+      "category": "Dụng cụ hàn",
+      "serialNumber": "WLD-003",
+      "status": "available",
+      "createdAt": "2025-01-03T00:00:00.000Z",
+      "updatedAt": "2025-01-03T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "Máy đo laser",
+      "category": "Thiết bị đo",
+      "serialNumber": "MSR-004",
+      "status": "maintenance",
+      "createdAt": "2025-01-04T00:00:00.000Z",
+      "updatedAt": "2025-01-04T00:00:00.000Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "equipmentId": "1",
+      "equipmentName": "Máy khoan Bosch",
+      "userId": "2",
+      "userName": "Normal User",
+      "startDate": "2025-01-10",
+      "endDate": "2025-01-15",
+      "purpose": "Dự án thi công nhà xưởng A",
+      "status": "approved",
+      "createdAt": "2025-01-05T08:00:00.000Z",
+      "updatedAt": "2025-01-05T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "equipmentId": "2",
+      "equipmentName": "Máy cắt laser",
+      "userId": "2",
+      "userName": "Normal User",
+      "startDate": "2025-01-08",
+      "endDate": "2025-01-12",
+      "purpose": "Cắt kim loại cho dự án B",
+      "status": "pending",
+      "createdAt": "2025-01-06T09:00:00.000Z",
+      "updatedAt": "2025-01-06T09:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "equipmentId": "3",
+      "equipmentName": "Máy hàn điện tử",
+      "userId": "1",
+      "userName": "Admin User",
+      "startDate": "2025-01-20",
+      "endDate": "2025-01-25",
+      "purpose": "Hàn khung thép cho công trình C",
+      "status": "completed",
+      "createdAt": "2024-12-28T10:00:00.000Z",
+      "updatedAt": "2025-01-26T15:00:00.000Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "1",
+      "userId": "2",
+      "userName": "Normal User",
+      "fileName": "work-progress-jan-2025.pdf",
+      "fileUrl": "https://example.com/files/work-progress-jan-2025.pdf",
+      "fileType": "application/pdf",
+      "uploadDate": "2025-01-05T14:30:00.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "userName": "Normal User",
+      "fileName": "timesheet-week1.xlsx",
+      "fileUrl": "https://example.com/files/timesheet-week1.xlsx",
+      "fileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "uploadDate": "2025-01-06T09:15:00.000Z",
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "userId": "1",
+      "userName": "Admin User",
+      "fileName": "project-report-dec.pdf",
+      "fileUrl": "https://example.com/files/project-report-dec.pdf",
+      "fileType": "application/pdf",
+      "uploadDate": "2024-12-30T16:00:00.000Z",
+      "status": "rejected"
+    }
+  ],
+  "history": [
+    {
+      "id": "1",
+      "entityType": "equipment",
+      "entityId": "1",
+      "action": "create",
+      "changedBy": "Admin User",
+      "changedAt": "2025-01-01T00:00:00.000Z",
+      "oldValue": null,
+      "newValue": "{\"name\":\"Máy khoan Bosch\",\"status\":\"available\"}",
+      "description": "Tạo mới thiết bị Máy khoan Bosch"
+    },
+    {
+      "id": "2",
+      "entityType": "booking",
+      "entityId": "1",
+      "action": "create",
+      "changedBy": "Normal User",
+      "changedAt": "2025-01-05T08:00:00.000Z",
+      "oldValue": null,
+      "newValue": "{\"equipmentId\":\"1\",\"status\":\"pending\"}",
+      "description": "Tạo yêu cầu đặt thiết bị Máy khoan Bosch"
+    },
+    {
+      "id": "3",
+      "entityType": "booking",
+      "entityId": "1",
+      "action": "update",
+      "changedBy": "Admin User",
+      "changedAt": "2025-01-05T10:00:00.000Z",
+      "oldValue": "{\"status\":\"pending\"}",
+      "newValue": "{\"status\":\"approved\"}",
+      "description": "Phê duyệt yêu cầu đặt thiết bị"
+    },
+    {
+      "id": "4",
+      "entityType": "certificate",
+      "entityId": "1",
+      "action": "create",
+      "changedBy": "Normal User",
+      "changedAt": "2025-01-05T14:30:00.000Z",
+      "oldValue": null,
+      "newValue": "{\"fileName\":\"work-progress-jan-2025.pdf\"}",
+      "description": "Tải lên chứng chỉ công việc"
+    },
+    {
+      "id": "5",
+      "entityType": "equipment",
+      "entityId": "4",
+      "action": "update",
+      "changedBy": "Admin User",
+      "changedAt": "2025-01-04T11:00:00.000Z",
+      "oldValue": "{\"status\":\"available\"}",
+      "newValue": "{\"status\":\"maintenance\"}",
+      "description": "Chuyển thiết bị sang trạng thái bảo trì"
+    }
+  ]
+}

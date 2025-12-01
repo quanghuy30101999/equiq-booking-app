@@ -14,7 +14,9 @@
     "@types/react-dom": "^19.2.3",
     "antd": "^6.0.0",
     "axios": "^1.13.2",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.19",
+    "express": "^5.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.67.0",
@@ -24,12 +26,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node mock-server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock-api": "node mock-server.js",
-    "dev": "npm run mock-api & npm start"
+    "start-fe": "react-scripts start",
+    "dev": "npm run start & npm run start-fe"
   },
   "eslintConfig": {
     "extends": [
@@ -49,8 +51,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
-  }
+  "devDependencies": {}
 }

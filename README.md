@@ -51,40 +51,48 @@
 - Node.js >= 14
 - npm hoặc yarn
 
+### Cấu trúc Monorepo
+
+Dự án được tổ chức theo kiến trúc monorepo:
+\`\`\`
+equiq-booking-app/
+├── backend/              # Mock API Server (Express)
+├── frontend/             # React Application
+└── package.json          # Root package quản lý cả 2
+\`\`\`
+
 ### Các bước cài đặt
 
-1. Cài đặt dependencies:
+1. Cài đặt dependencies cho cả backend và frontend:
 \`\`\`bash
 npm install
 \`\`\`
 
-2. File .env đã được tạo sẵn với cấu hình:
-\`\`\`
-REACT_APP_API_URL=http://localhost:3001/api
-\`\`\`
+2. Cấu hình môi trường (đã có sẵn):
+- File \`frontend/.env\` chứa: \`REACT_APP_API_URL=http://localhost:3001/api\`
 
-3. Chạy ứng dụng với Mock API:
+3. Chạy ứng dụng:
 
-**Cách 1: Chạy cả Mock API và React App cùng lúc (Khuyến nghị)**
+**Cách 1: Chạy cả Backend và Frontend cùng lúc (Khuyến nghị)**
 \`\`\`bash
 npm run dev
 \`\`\`
 
 **Cách 2: Chạy riêng từng service**
 
-Terminal 1 - Chạy Mock API Server:
+Terminal 1 - Chạy Backend:
 \`\`\`bash
-npm run mock-api
+npm run start:backend
 \`\`\`
 
-Terminal 2 - Chạy React App:
+Terminal 2 - Chạy Frontend:
 \`\`\`bash
-npm start
+npm run start:frontend
 \`\`\`
 
 Ứng dụng sẽ chạy tại:
-- React App: [http://localhost:3000](http://localhost:3000)
-- Mock API: [http://localhost:3001](http://localhost:3001)
+- Frontend (React App): [http://localhost:3000](http://localhost:3000)
+- Backend (Mock API): [http://localhost:3001](http://localhost:3001)
 
 ### Tài khoản demo
 
@@ -106,44 +114,36 @@ npm start
 npm run build
 \`\`\`
 
-Build folder sẽ được tạo trong thư mục \`build/\`
+Build folder sẽ được tạo trong thư mục \`frontend/build/\`
 
 ## Cấu trúc dự án
 
 \`\`\`
-src/
-├── components/
-│   ├── Auth/                 # Components xác thực
-│   │   ├── Login.tsx
-│   │   ├── Register.tsx
-│   │   ├── ResetPassword.tsx
-│   │   └── ChangePassword.tsx
-│   ├── Master/              # Components quản lý danh mục
-│   │   ├── EmployeeManagement.tsx
-│   │   └── EquipmentManagement.tsx
-│   ├── Equipment/           # Components đặt thiết bị
-│   │   └── EquipmentBooking.tsx
-│   ├── WorkCertificate/     # Components chứng chỉ công việc
-│   │   └── CertificateUpload.tsx
-│   └── Common/              # Components dùng chung
-│       ├── MainLayout.tsx
-│       ├── ProtectedRoute.tsx
-│       └── HistoryViewer.tsx
-├── contexts/                # React Context (Auth)
-│   └── AuthContext.tsx
-├── services/                # API Service Layer
-│   ├── api.ts
-│   ├── authService.ts
-│   ├── masterService.ts
-│   ├── equipmentService.ts
-│   ├── certificateService.ts
-│   └── historyService.ts
-├── types/                   # TypeScript Types
-│   └── index.ts
-├── pages/                   # Pages
-│   └── Dashboard.tsx
-├── App.tsx                  # Main App với routing
-└── index.tsx               # Entry point
+equiq-booking-app/
+├── backend/
+│   ├── mock-server.js       # Express server
+│   ├── mock-db.json         # Mock database
+│   └── package.json         # Backend dependencies
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Auth/        # Components xác thực
+│   │   │   ├── Master/      # Components quản lý danh mục
+│   │   │   ├── Equipment/   # Components đặt thiết bị
+│   │   │   ├── WorkCertificate/  # Components chứng chỉ
+│   │   │   └── Common/      # Components dùng chung
+│   │   ├── contexts/        # React Context (Auth)
+│   │   ├── services/        # API Service Layer
+│   │   ├── types/           # TypeScript Types
+│   │   ├── pages/           # Pages
+│   │   ├── App.tsx
+│   │   └── index.tsx
+│   ├── public/
+│   ├── .env                 # Frontend environment config
+│   ├── tsconfig.json
+│   └── package.json         # Frontend dependencies
+├── package.json             # Root package (workspaces)
+└── MONOREPO_GUIDE.md        # Hướng dẫn chi tiết
 \`\`\`
 
 ## API Endpoints (Backend yêu cầu)

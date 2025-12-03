@@ -6,7 +6,7 @@ import { message } from 'antd';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (credentials: LoginCredentials) => Promise<void>;
+  login: (credentials: LoginCredentials) => Promise<User>;
   logout: () => Promise<void>;
   isAuthenticated: boolean;
 }
@@ -23,17 +23,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setLoading(false);
   }, []);
 
-  const login = async (credentials: LoginCredentials) => {
+  const login = async (credentials: LoginCredentials): Promise<User> => {
     try {
       const response = await authService.login(credentials);
       if (response.success) {
         localStorage.setItem('authToken', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         setUser(response.data.user);
-        message.success('Đăng nhập thành công!');
+        message.success('ログインしました');
+        return response.data.user;
       }
+      throw new Error('Login failed');
     } catch (error: any) {
-      message.error(error.response?.data?.message || 'Đăng nhập thất bại!');
+      message.error(error.response?.data?.message || 'ログインに失敗しました');
       throw error;
     }
   };
@@ -41,7 +43,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const logout = async () => {
     await authService.logout();
     setUser(null);
-    message.success('Đã đăng xuất!');
+    message.success('ログアウトしました');
   };
 
   return (

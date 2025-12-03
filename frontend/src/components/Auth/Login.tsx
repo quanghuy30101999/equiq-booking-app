@@ -4,19 +4,25 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { LoginCredentials } from '../../types';
+import JA from '../../constants/ja';
 
 const { Title } = Typography;
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const onFinish = async (values: LoginCredentials) => {
     setLoading(true);
     try {
-      await login(values);
-      navigate('/dashboard');
+      const loggedInUser = await login(values);
+      // Admin → Dashboard, Individual → Home
+      if (loggedInUser.role === 'Admin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/home');
+      }
     } catch (error) {
       console.error('Login error:', error);
     } finally {
@@ -28,7 +34,7 @@ const Login: React.FC = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#f0f2f5' }}>
       <Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
         <Title level={2} style={{ textAlign: 'center', marginBottom: 32 }}>
-          Đăng nhập
+          {JA.auth.login}
         </Title>
         <Form
           name="login"
@@ -38,36 +44,36 @@ const Login: React.FC = () => {
         >
           <Form.Item
             name="loginId"
-            rules={[{ required: true, message: 'Vui lòng nhập Login ID / Password!' }]}
+            rules={[{ required: true, message: JA.auth.loginRequired }]}
           >
             <Input
               prefix={<UserOutlined />}
-              placeholder="Login ID / Email"
+              placeholder={JA.auth.loginId}
               size="large"
             />
           </Form.Item>
 
           <Form.Item
             name="password"
-            rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+            rules={[{ required: true, message: JA.auth.passwordRequired }]}
           >
             <Input.Password
               prefix={<LockOutlined />}
-              placeholder="Mật khẩu"
+              placeholder={JA.auth.password}
               size="large"
             />
           </Form.Item>
 
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading} block size="large">
-              Đăng nhập
+              {JA.auth.login}
             </Button>
           </Form.Item>
 
           <div style={{ textAlign: 'center' }}>
-            <Link to="/register">Đăng ký tài khoản mới</Link>
+            <Link to="/register">{JA.auth.register}</Link>
             <span style={{ margin: '0 8px' }}>|</span>
-            <Link to="/reset-password">Quên mật khẩu?</Link>
+            <Link to="/reset-password">{JA.auth.forgotPassword}</Link>
           </div>
         </Form>
       </Card>

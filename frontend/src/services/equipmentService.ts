@@ -42,4 +42,8 @@ export const equipmentService = {
   getMyBookings: async (): Promise<ApiResponse<EquipmentUsageHistory[]>> => {
     return apiService.get('/equipment/my-bookings');
   },
+
+  getAllBookings: async (): Promise<ApiResponse<EquipmentUsageHistory[]>> => {
+    return apiService.get('/equipment/bookings');
+  },
 };

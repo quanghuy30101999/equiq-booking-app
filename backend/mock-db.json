@@ -1,0 +1,212 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "name": "管理者",
+      "role": "Admin",
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "email": "user@example.com",
+      "password": "user123",
+      "name": "田中太郎",
+      "role": "Individual",
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name": "山田花子",
+      "email": "yamada@example.com",
+      "role": "エンジニア",
+      "department": "技術部",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "佐藤健二",
+      "email": "sato@example.com",
+      "role": "マネージャー",
+      "department": "管理部",
+      "createdAt": "2025-01-02T00:00:00.000Z",
+      "updatedAt": "2025-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "鈴木一郎",
+      "email": "suzuki@example.com",
+      "role": "技術者",
+      "department": "技術部",
+      "createdAt": "2025-01-03T00:00:00.000Z",
+      "updatedAt": "2025-01-03T00:00:00.000Z"
+    }
+  ],
+  "equipments": [
+    {
+      "id": "1",
+      "name": "バックホー CAT320",
+      "category": "掘削機",
+      "serialNumber": "BH-001",
+      "status": "available",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "クレーン車 500トン",
+      "category": "クレーン",
+      "serialNumber": "CR-002",
+      "status": "in_use",
+      "createdAt": "2025-01-02T00:00:00.000Z",
+      "updatedAt": "2025-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "ブルドーザー D8",
+      "category": "整地機",
+      "serialNumber": "BD-003",
+      "status": "maintenance",
+      "createdAt": "2025-01-03T00:00:00.000Z",
+      "updatedAt": "2025-01-03T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "ダンプトラック 10トン",
+      "category": "運搬車",
+      "serialNumber": "DT-004",
+      "status": "available",
+      "createdAt": "2025-01-04T00:00:00.000Z",
+      "updatedAt": "2025-01-04T00:00:00.000Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "equipmentId": "1",
+      "equipmentName": "バックホー CAT320",
+      "userId": "2",
+      "userName": "田中太郎",
+      "startDate": "2025-12-05T08:00:00.000Z",
+      "endDate": "2025-12-05T17:00:00.000Z",
+      "purpose": "基礎工事",
+      "status": "approved",
+      "createdAt": "2025-12-01T00:00:00.000Z",
+      "updatedAt": "2025-12-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "equipmentId": "2",
+      "equipmentName": "クレーン車 500トン",
+      "userId": "2",
+      "userName": "田中太郎",
+      "startDate": "2025-12-06T09:00:00.000Z",
+      "endDate": "2025-12-06T16:00:00.000Z",
+      "purpose": "鉄骨建て方",
+      "status": "pending",
+      "createdAt": "2025-12-02T00:00:00.000Z",
+      "updatedAt": "2025-12-02T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "equipmentId": "4",
+      "equipmentName": "ダンプトラック 10トン",
+      "userId": "2",
+      "userName": "田中太郎",
+      "startDate": "2025-12-04T07:00:00.000Z",
+      "endDate": "2025-12-04T15:00:00.000Z",
+      "purpose": "土砂運搬",
+      "status": "completed",
+      "createdAt": "2025-11-30T00:00:00.000Z",
+      "updatedAt": "2025-12-04T15:30:00.000Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "1",
+      "userId": "2",
+      "userName": "田中太郎",
+      "fileName": "工程表_12月.pdf",
+      "fileUrl": "https://example.com/files/koutei-12.pdf",
+      "fileType": "application/pdf",
+      "uploadDate": "2025-12-01T00:00:00.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "userName": "田中太郎",
+      "fileName": "安全書類.xlsx",
+      "fileUrl": "https://example.com/files/anzen.xlsx",
+      "fileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "uploadDate": "2025-12-02T00:00:00.000Z",
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "userId": "2",
+      "userName": "田中太郎",
+      "fileName": "施工計画書.pdf",
+      "fileUrl": "https://example.com/files/sekou.pdf",
+      "fileType": "application/pdf",
+      "uploadDate": "2025-11-28T00:00:00.000Z",
+      "status": "approved"
+    }
+  ],
+  "history": [
+    {
+      "id": "1",
+      "entityType": "booking",
+      "entityId": "1",
+      "action": "created",
+      "userId": "2",
+      "userName": "田中太郎",
+      "timestamp": "2025-12-01T00:00:00.000Z",
+      "changes": "予約を作成しました"
+    },
+    {
+      "id": "2",
+      "entityType": "booking",
+      "entityId": "1",
+      "action": "updated",
+      "userId": "1",
+      "userName": "管理者",
+      "timestamp": "2025-12-01T10:00:00.000Z",
+      "changes": "ステータスを承認済みに変更"
+    },
+    {
+      "id": "3",
+      "entityType": "equipment",
+      "entityId": "3",
+      "action": "updated",
+      "userId": "1",
+      "userName": "管理者",
+      "timestamp": "2025-12-02T00:00:00.000Z",
+      "changes": "ステータスをメンテナンス中に変更"
+    },
+    {
+      "id": "4",
+      "entityType": "certificate",
+      "entityId": "1",
+      "action": "created",
+      "userId": "2",
+      "userName": "田中太郎",
+      "timestamp": "2025-12-01T00:00:00.000Z",
+      "changes": "工程表をアップロード"
+    },
+    {
+      "id": "5",
+      "entityType": "certificate",
+      "entityId": "1",
+      "action": "updated",
+      "userId": "1",
+      "userName": "管理者",
+      "timestamp": "2025-12-01T12:00:00.000Z",
+      "changes": "工程表を承認"
+    }
+  ]
+}

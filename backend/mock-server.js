@@ -247,6 +247,11 @@ app.get('/api/equipment/my-bookings', (req, res) => {
   res.json({ success: true, data: bookings });
 });
 
+// Get ALL bookings (for calendar view)
+app.get('/api/equipment/bookings', (req, res) => {
+  res.json({ success: true, data: mockData.bookings });
+});
+
 app.post('/api/equipment/bookings', (req, res) => {
   const { equipmentId, startDate, endDate, purpose } = req.body;
   const equipment = mockData.equipments.find(e => e.id === equipmentId);
@@ -269,6 +274,23 @@ app.post('/api/equipment/bookings', (req, res) => {
   saveData();
 
   res.json({ success: true, data: newBooking, message: 'Đặt thiết bị thành công' });
+});
+
+// Update booking (for drag-and-drop)
+app.put('/api/equipment/bookings/:id', (req, res) => {
+  const index = mockData.bookings.findIndex(b => b.id === req.params.id);
+
+  if (index !== -1) {
+    mockData.bookings[index] = {
+      ...mockData.bookings[index],
+      ...req.body,
+      updatedAt: new Date().toISOString()
+    };
+    saveData();
+    res.json({ success: true, data: mockData.bookings[index], message: 'Cập nhật booking thành công' });
+  } else {
+    res.status(404).json({ success: false, message: 'Không tìm thấy booking' });
+  }
 });
 
 app.post('/api/equipment/bookings/:id/approve', (req, res) => {

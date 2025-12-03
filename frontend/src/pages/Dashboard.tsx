@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row, Col, Statistic, Table, Tag } from 'antd';
+import { Card, Row, Col, Statistic, Table, Tag, Typography } from 'antd';
 import {
   CalendarOutlined,
   FileOutlined,
   TeamOutlined,
+  DashboardOutlined,
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { equipmentService } from '../services/equipmentService';
 import { certificateService } from '../services/certificateService';
 import { EquipmentUsageHistory, WorkCertificate } from '../types';
 import dayjs from 'dayjs';
+import JA from '../constants/ja';
+
+const { Title } = Typography;
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -60,13 +64,13 @@ const Dashboard: React.FC = () => {
   const getStatusText = (status: string) => {
     switch (status) {
       case 'pending':
-        return 'Chờ duyệt';
+        return JA.booking.pending;
       case 'approved':
-        return 'Đã duyệt';
+        return JA.booking.approved;
       case 'rejected':
-        return 'Từ chối';
+        return JA.booking.rejected;
       case 'completed':
-        return 'Hoàn thành';
+        return JA.booking.completed;
       default:
         return status;
     }
@@ -74,24 +78,24 @@ const Dashboard: React.FC = () => {
 
   const bookingColumns = [
     {
-      title: 'Thiết bị',
+      title: JA.booking.equipment,
       dataIndex: 'equipmentName',
       key: 'equipmentName',
     },
     {
-      title: 'Ngày bắt đầu',
+      title: JA.booking.startDate,
       dataIndex: 'startDate',
       key: 'startDate',
-      render: (date: string) => dayjs(date).format('DD/MM/YYYY'),
+      render: (date: string) => dayjs(date).format('YYYY/MM/DD'),
     },
     {
-      title: 'Ngày kết thúc',
+      title: JA.booking.endDate,
       dataIndex: 'endDate',
       key: 'endDate',
-      render: (date: string) => dayjs(date).format('DD/MM/YYYY'),
+      render: (date: string) => dayjs(date).format('YYYY/MM/DD'),
     },
     {
-      title: 'Trạng thái',
+      title: JA.booking.status,
       dataIndex: 'status',
       key: 'status',
       render: (status: string) => (
@@ -102,18 +106,18 @@ const Dashboard: React.FC = () => {
 
   const certificateColumns = [
     {
-      title: 'Tên file',
+      title: JA.certificate.fileName,
       dataIndex: 'fileName',
       key: 'fileName',
     },
     {
-      title: 'Ngày tải lên',
+      title: JA.certificate.uploadDate,
       dataIndex: 'uploadDate',
       key: 'uploadDate',
-      render: (date: string) => dayjs(date).format('DD/MM/YYYY'),
+      render: (date: string) => dayjs(date).format('YYYY/MM/DD'),
     },
     {
-      title: 'Trạng thái',
+      title: JA.certificate.status,
       dataIndex: 'status',
       key: 'status',
       render: (status: string) => (
@@ -124,16 +128,18 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <h1>Chào mừng, {user?.name}!</h1>
-      <p style={{ color: '#666', marginBottom: 24 }}>
-        Đây là tổng quan về hoạt động của bạn trong hệ thống
+      <Title level={2}>
+        <DashboardOutlined /> {JA.dashboard.title}
+      </Title>
+      <p style={{ color: '#666', marginBottom: 24, fontSize: 16 }}>
+        {JA.dashboard.welcomeBack}, {user?.name}!
       </p>
 
       <Row gutter={16} style={{ marginBottom: 24 }}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="Tổng số đặt thiết bị"
+              title={JA.dashboard.totalBookings}
               value={myBookings.length}
               prefix={<CalendarOutlined />}
               valueStyle={{ color: '#3f8600' }}
@@ -143,7 +149,7 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="Đang chờ duyệt"
+              title={JA.dashboard.pendingApprovals}
               value={myBookings.filter(b => b.status === 'pending').length}
               prefix={<CalendarOutlined />}
               valueStyle={{ color: '#1890ff' }}
@@ -153,7 +159,7 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="Chứng chỉ đã tải lên"
+              title={JA.certificate.title}
               value={myCertificates.length}
               prefix={<FileOutlined />}
               valueStyle={{ color: '#722ed1' }}
@@ -163,8 +169,8 @@ const Dashboard: React.FC = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="Vai trò"
-              value={user?.role}
+              title={JA.user.role}
+              value={user?.role === 'Admin' ? JA.user.admin : JA.user.individual}
               prefix={<TeamOutlined />}
               valueStyle={{ color: '#cf1322' }}
             />
@@ -174,7 +180,7 @@ const Dashboard: React.FC = () => {
 
       <Row gutter={16}>
         <Col xs={24} lg={12}>
-          <Card title="Đặt thiết bị gần đây" style={{ marginBottom: 16 }}>
+          <Card title={JA.dashboard.recentBookings} style={{ marginBottom: 16 }}>
             <Table
               columns={bookingColumns}
               dataSource={myBookings}
@@ -186,7 +192,7 @@ const Dashboard: React.FC = () => {
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Chứng chỉ gần đây" style={{ marginBottom: 16 }}>
+          <Card title={JA.dashboard.recentCertificates} style={{ marginBottom: 16 }}>
             <Table
               columns={certificateColumns}
               dataSource={myCertificates}

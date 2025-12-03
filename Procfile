@@ -1,1 +1,1 @@
-web: node mock-server.js
+web: node backend/mock-server.js
